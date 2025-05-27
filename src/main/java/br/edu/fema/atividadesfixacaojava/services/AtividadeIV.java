@@ -1,6 +1,8 @@
 package br.edu.fema.atividadesfixacaojava.services;
 
 import br.edu.fema.atividadesfixacaojava.model.Aluno;
+
+import java.util.Collection;
 import java.util.List;
 import java.util.Set;
 
@@ -13,4 +15,10 @@ public interface AtividadeIV
     List<Aluno> alunosSemCurso(List<Aluno> alunos);
 
     List<Aluno> alunosComCurso(List<Aluno> alunos);
+
+    Collection<Aluno> alunosMatutino30(List<Aluno> alunos);
+
+    Aluno primeiroDe2021(List<Aluno> alunos);
+
+    Collection<Aluno> encontrarAlunos(int dia, int mes, List<Aluno> alunos);
 }
