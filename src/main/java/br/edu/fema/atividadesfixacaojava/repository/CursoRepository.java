@@ -18,7 +18,7 @@ class CursoRepository {
         );
     }
 
-     static Curso findById(Long id){
+    static Curso findById(Long id){
         List<Curso> cursos = findAll();
         for (Curso curso : cursos) {
             if (curso.getId().equals(id)) {

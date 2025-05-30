@@ -7,18 +7,23 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class AtividadeIImpl implements AtividadeI
+public class Atividade1 implements Atividade
 {
-
-    @Override
-    public Set<Aluno> returnListaAlunos()
+    public Set<Aluno> returnListaAlunos(List<Aluno> alunos)
     {
-        AlunoRepository alunoRepository = new AlunoRepository();
-        List<Aluno> alunos = alunoRepository.findAll();
         Set<Aluno> alunosSet = new HashSet<Aluno>();
 
         alunos.forEach(a -> alunosSet.add(a));
 
         return alunosSet;
+    }
+
+    @Override
+    public void executar()
+    {
+        AlunoRepository alunoRepository = new AlunoRepository();
+        var alunosSet = returnListaAlunos(alunoRepository.findAll());
+
+        alunosSet.forEach(System.out::println);
     }
 }

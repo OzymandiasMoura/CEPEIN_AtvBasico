@@ -1,4 +1,4 @@
-package br.edu.fema.atividadesfixacaojava.services.classesUteis;
+package br.edu.fema.atividadesfixacaojava.services.utilities;
 
 import java.time.LocalDate;
 
