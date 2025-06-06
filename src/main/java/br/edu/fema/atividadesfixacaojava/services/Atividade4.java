@@ -19,7 +19,7 @@ public class Atividade4 implements Atividade
         final LocalDate filterData = LocalDate.of(2001, 02, 15);
         ConvercaoDataString conversor = new ConvercaoDataString();
 
-        return alunos.stream().filter(a -> conversor.stringParaData(a.getDataNascimento()).isAfter(filterData)).collect(Collectors.toList());
+        return alunos.stream().filter(a -> ConvercaoDataString.stringParaData(a.getDataNascimento()).isAfter(filterData)).collect(Collectors.toList());
     }
 
     public Set<Aluno> alunosCad18(List<Aluno> alunos)
@@ -40,11 +40,10 @@ public class Atividade4 implements Atividade
     public Collection<Aluno> alunosMatutino30(List<Aluno> alunos)
     {
         var alunosComCurso = alunosComCurso(alunos);
-        ConvercaoDataString dtst = new ConvercaoDataString();
 
         return alunosComCurso.stream()
                   .filter(a -> a.getCurso().getPeriodo().equals(MATUTINO))
-                  .filter(a -> (LocalDate.now().getYear() - (dtst.stringParaData(a.getDataNascimento()).getYear())) >= 30)
+                  .filter(a -> (LocalDate.now().getYear() - (ConvercaoDataString.stringParaData(a.getDataNascimento()).getYear())) >= 30)
                   .toList();
     }
 

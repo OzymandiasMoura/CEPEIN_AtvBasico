@@ -11,25 +11,17 @@ import java.util.List;
 public class Atividade7 implements Atividade
 {
     public List<LocalDateTime> cadastrosOrdenados(List<Aluno> alunos){
-        List<LocalDateTime> setOrdenada = alunos.stream()
-                  .map(a -> a.getDataHoraCadastro())
+        return alunos.stream()
+                  .map(Aluno::getDataHoraCadastro)
                   .sorted(Comparator.comparing(LocalDateTime::toLocalDate).reversed().thenComparing(LocalDateTime::toLocalTime))
                   .toList();
-
-
-        return setOrdenada;
     }
 
     @Override
     public void executar()
     {
-        AlunoRepository alunoRepository = new AlunoRepository();
-        var ord = cadastrosOrdenados(alunoRepository.findAll());
+        var ord = cadastrosOrdenados(AlunoRepository.findAll());
         DateTimeFormatter formatacao = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         ord.forEach(a -> System.out.println(a.format(formatacao)));
-
-
-
-
     }
 }

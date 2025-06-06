@@ -26,10 +26,9 @@ public class Atividade10 implements Atividade
     @Override
     public void executar()
     {
-        AlunoRepository alunoRepository = new AlunoRepository();
-        var mapOrg = alunosPorCursoBeneficio(alunoRepository.findAll());
+        var mapOrg = alunosPorCursoBeneficio(AlunoRepository.findAll());
         System.out.println("Map organizado Beneficios/Curso: \n" + mapOrg);
-        var mapOrg2 = alunosPorCursoPeriodoBeneficio(alunoRepository.findAll());
+        var mapOrg2 = alunosPorCursoPeriodoBeneficio(AlunoRepository.findAll());
         System.out.println("Map organizado Periodo/Beneficio/Curso: \n" + mapOrg2);
 
     }

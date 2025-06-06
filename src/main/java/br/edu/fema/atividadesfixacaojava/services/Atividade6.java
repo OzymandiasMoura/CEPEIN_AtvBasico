@@ -11,16 +11,12 @@ import java.util.stream.Collectors;
 
 public class Atividade6 implements Atividade
 {
-    ConvercaoDataString convercao = new ConvercaoDataString();
-
     public Set<String> aniversariosOrdenados(List<Aluno> alunos){
-        TreeSet<String> listOrd = alunos.stream()
-                  .map(a -> convercao.stringParaData(a.getDataNascimento()))
+        return alunos.stream()
+                  .map(a -> ConvercaoDataString.stringParaData(a.getDataNascimento()))
                   .sorted(Comparator.naturalOrder())
                   .map(a -> a.toString())
                   .collect(Collectors.toCollection(TreeSet::new));
-
-        return listOrd;
     }
 
 
@@ -28,8 +24,7 @@ public class Atividade6 implements Atividade
     @Override
     public void executar()
     {
-        AlunoRepository alunoRepository = new AlunoRepository();
-        var ord = aniversariosOrdenados(alunoRepository.findAll());
+        var ord = aniversariosOrdenados(AlunoRepository.findAll());
         ord.forEach(System.out::println);
     }
 }

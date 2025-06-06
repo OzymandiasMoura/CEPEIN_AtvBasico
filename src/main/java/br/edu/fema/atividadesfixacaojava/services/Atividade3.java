@@ -17,11 +17,11 @@ public class Atividade3 implements Atividade
 
     public List<LocalDate> returnNascimentoAluno(List<Aluno> alunos)
     {
-        ConvercaoDataString conversor = new ConvercaoDataString();
+
 
         return alunos.stream()
                   .map(a -> a.getDataNascimento())
-                  .map(a -> conversor.stringParaData(a))
+                  .map(a -> ConvercaoDataString.stringParaData(a))
                   .collect(Collectors.toList());
     }
 

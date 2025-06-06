@@ -9,13 +9,13 @@ import java.util.OptionalDouble;
 public class Atividade8 implements Atividade
 {
     public BigDecimal somaIntegers(List<Integer> nums){
-        BigDecimal soma = BigDecimal.valueOf(nums.stream().reduce((a, b) -> a + b).get());
+        BigDecimal soma = BigDecimal.valueOf(nums.stream().reduce(Integer::sum).get());
 
         return soma;
     }
 
     public Optional<Double> soma2(List<Double> nums){
-        return nums.stream().reduce((a, b) -> a + b);
+        return nums.stream().reduce(Double::sum);
     }
 
     public OptionalDouble soma3(List<Double> nums){

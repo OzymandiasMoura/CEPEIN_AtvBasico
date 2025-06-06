@@ -6,7 +6,7 @@ import static java.lang.Integer.parseInt;
 
 public class ConvercaoDataString
 {
-    public LocalDate stringParaData(String dataString){
+    public static LocalDate stringParaData(String dataString){
 
         int day = parseInt(dataString.substring(0, 2));
         int month = parseInt(dataString.substring(3, 5));

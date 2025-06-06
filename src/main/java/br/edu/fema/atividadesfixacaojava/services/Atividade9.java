@@ -11,18 +11,17 @@ import java.util.stream.Collectors;
 
 public class Atividade9 implements Atividade
 {
-    ConvercaoDataString convercao = new ConvercaoDataString();
     public Map<Boolean, List<Aluno>> alunoPorBeneficio(List<Aluno> aluno){
-        return aluno.stream().collect(Collectors.groupingBy(a -> a.getPossuiAlgumTipoDeBeneficio()));
+        return aluno.stream().collect(Collectors.groupingBy(Aluno::getPossuiAlgumTipoDeBeneficio));
     }
     public Map<Month, List<Aluno>> alunoPorMes(List<Aluno> aluno){
-        return aluno.stream().collect(Collectors.groupingBy(a -> convercao.stringParaData(a.getDataNascimento()).getMonth()));
+        return aluno.stream().collect(Collectors.groupingBy(a -> ConvercaoDataString.stringParaData(a.getDataNascimento()).getMonth()));
     }
     public Map<Year, List<Aluno>> alunoPorAno(List<Aluno> aluno){
-        return aluno.stream().collect(Collectors.groupingBy(a -> Year.of(convercao.stringParaData(a.getDataNascimento()).getYear())));
+        return aluno.stream().collect(Collectors.groupingBy(a -> Year.of(ConvercaoDataString.stringParaData(a.getDataNascimento()).getYear())));
     }
     public Map<YearMonth, List<Aluno>> alunoPorMesAno(List<Aluno> aluno){
-        return aluno.stream().collect(Collectors.groupingBy(a -> YearMonth.from(convercao.stringParaData(a.getDataNascimento()))));
+        return aluno.stream().collect(Collectors.groupingBy(a -> YearMonth.from(ConvercaoDataString.stringParaData(a.getDataNascimento()))));
     }
     public Map<Boolean, List<Aluno>> alunoPorCurso(List<Aluno> aluno){
         return aluno.stream().collect(Collectors.groupingBy(a -> (a.getCurso() != null) ? true : false));
@@ -33,22 +32,19 @@ public class Atividade9 implements Atividade
     @Override
     public void executar()
     {
-        AlunoRepository alunoRepository = new AlunoRepository();
-
-
-        var mapOrg = alunoPorBeneficio(alunoRepository.findAll());
+        var mapOrg = alunoPorBeneficio(AlunoRepository.findAll());
         System.out.println(mapOrg);
 
-        var mapOrg2 = alunoPorMes(alunoRepository.findAll());
+        var mapOrg2 = alunoPorMes(AlunoRepository.findAll());
         System.out.println(mapOrg2);
 
-        var mapOrg3 = alunoPorAno(alunoRepository.findAll());
+        var mapOrg3 = alunoPorAno(AlunoRepository.findAll());
         System.out.println(mapOrg3);
 
-        var mapOrg4 = alunoPorMesAno(alunoRepository.findAll());
+        var mapOrg4 = alunoPorMesAno(AlunoRepository.findAll());
         System.out.println(mapOrg4);
 
-        var mapOrg5 = alunoPorCurso(alunoRepository.findAll());
+        var mapOrg5 = alunoPorCurso(AlunoRepository.findAll());
         System.out.println(mapOrg5);
     }
 

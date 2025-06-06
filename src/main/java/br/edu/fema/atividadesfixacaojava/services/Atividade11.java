@@ -30,6 +30,5 @@ public class Atividade11 implements Atividade
         for(Map.Entry<Integer, String> entry : map2.entrySet()){
             System.out.println(entry.getKey() + " - " + entry.getValue());
         }
-
     }
 }
